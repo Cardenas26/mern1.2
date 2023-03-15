@@ -1,17 +1,14 @@
 import React, { useState } from 'react';
 import {
-  Dropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
   Accordion,
   AccordionBody,
   AccordionHeader,
   AccordionItem,
 } from 'reactstrap';
 
-function Data(props) {
-  const [open, setOpen] = useState('1');
+function Data (props) {
+  const [open, setOpen] = useState('dog-facts');
+
   const toggle = (id) => {
     if (open === id) {
       setOpen();
@@ -24,31 +21,11 @@ function Data(props) {
     <div>
       <Accordion open={open} toggle={toggle}>
         <AccordionItem>
-          <AccordionHeader targetId="1">Accordion Item 1</AccordionHeader>
-          <AccordionBody accordionId="1">
-            <strong>This is the first item's accordion body.</strong>
-            You can modify any of this with custom CSS or overriding our default
-            variables. It's also worth noting that just about any HTML can
-            go within the <code>.accordion-body</code>, though the transition
-            does limit overflow.
-          </AccordionBody>
-        </AccordionItem>
-        <AccordionItem>
-          <AccordionHeader targetId="2">Accordion Item 2</AccordionHeader>
-          <AccordionBody accordionId="2">
-            <strong>This is the second item's accordion body.</strong>
-            You can modify any of this with custom CSS or overriding our default
-            variables. It's also worth noting that just about any HTML can
-            go within the <code>.accordion-body</code>, though the transition
-            does limit overflow.
-          </AccordionBody>
-        </AccordionItem>
-        <AccordionItem>
-          <AccordionHeader targetId="3">Accordion Item 3</AccordionHeader>
-          <AccordionBody accordionId="3">
-            {Array.isArray(props.data) && props.data.map((post) => (
-              <div key={post.id}>
-                <p>{post.data}</p>
+          <AccordionHeader targetId="dog-facts">Dog Facts</AccordionHeader>
+          <AccordionBody accordionId="dog-facts" in>
+            {props.data.facts && props.data.facts.map((fact, index) => (
+              <div key={index}>
+                <p>{fact}</p>
               </div>
             ))}
           </AccordionBody>
@@ -58,23 +35,4 @@ function Data(props) {
   );
 }
 
-function Nav(props) {
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-
-  const toggle = () => setDropdownOpen((prevState) => !prevState);
-
-  return (
-    <div>
-      <Dropdown isOpen={dropdownOpen} toggle={toggle}>
-        <DropdownToggle caret>Dropdown</DropdownToggle>
-        <DropdownMenu end>
-          <DropdownItem>Action</DropdownItem>
-          <DropdownItem>Another action</DropdownItem>
-          <DropdownItem>Something else here</DropdownItem>
-        </DropdownMenu>
-      </Dropdown>
-    </div>
-  );
-}
-
-export default Data ;
+export default Data
