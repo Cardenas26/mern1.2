@@ -15,7 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn coding with dungy
+          Learn coding with cez
         </a>
       </header>
     </div>
